@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Live Crypto Currency Tracker & Profit Calculator 2026. Calculate ROI for Bitcoin, Ethereum. Best free tool for Indian & Global traders.">
+    <meta name="keywords" content="Crypto Profit Calculator, Bitcoin ROI, Live Crypto Price INR, Best247 Tools, Trading Strategy 2026">
+    <meta name="author" content="Best247 Team">
+    <title>Live Market Watch - Real Time Crypto Tracker & Calculator</title>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "name": "Live Market Watch",
+          "applicationCategory": "FinanceApplication",
+          "operatingSystem": "All",
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [{
+            "@type": "Question",
+            "name": "How to calculate crypto profit accurately?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Use the formula: (Investment / Buy Price) * Sell Price - Investment. Our tool automates this instantly." }
+          }, {
+            "@type": "Question",
+            "name": "Is this tool free for Indian users?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes, Live Market Watch is 100% free and works on all devices including mobile and tablets." }
+          }]
+        }
+      ]
+    }
+    </script>
+
+    <style>
+        :root { --primary: #1e1e2f; --secondary: #27293d; --accent: #00f2c3; --text: #ffffff; --danger: #fd5d93; --success: #42b883; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { background-color: var(--primary); color: var(--text); padding: 20px; max-width: 900px; margin: 0 auto; line-height: 1.6; }
+        
+        /* Nav & Header */
+        nav { text-align: right; margin-bottom: 20px; }
+        nav a { color: #ccc; text-decoration: none; margin-left: 15px; font-size: 0.9rem; }
+        nav a:hover { color: var(--accent); }
+        header { text-align: center; margin-bottom: 30px; padding: 25px; background: var(--secondary); border-radius: 15px; border-bottom: 3px solid var(--accent); }
+        
+        /* Tool Grid */
+        .price-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 15px; margin-bottom: 30px; }
+        .card { background: var(--secondary); padding: 15px; border-radius: 12px; text-align: center; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; }
+        .card:hover { transform: translateY(-5px); border-color: var(--accent); }
+        .coin-price { font-size: 1.3rem; color: var(--accent); font-weight: bold; margin: 5px 0; }
+        .up { color: var(--success); } .down { color: var(--danger); }
+
+        /* Calculator */
+        .calculator { background: var(--secondary); padding: 25px; border-radius: 15px; margin-bottom: 40px; }
+        .input-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-size: 0.9rem; opacity: 0.8; }
+        input { width: 100%; padding: 12px; background: #1e1e2f; border: 1px solid #3e3e5e; color: white; border-radius: 8px; }
+        button { width: 100%; padding: 15px; background: linear-gradient(45deg, var(--accent), #00d4ff); border: none; font-weight: bold; font-size: 1.1rem; border-radius: 8px; cursor: pointer; margin-top: 10px; }
+        #result { margin-top: 20px; padding: 15px; background: rgba(0, 242, 195, 0.1); border-radius: 8px; text-align: center; display: none; }
+
+        /* SEO Article Content */
+        article { background: #232336; padding: 30px; border-radius: 15px; margin-bottom: 30px; }
+        article h2 { color: var(--accent); margin-top: 30px; margin-bottom: 15px; font-size: 1.5rem; }
+        article h3 { color: #fff; margin-top: 20px; font-size: 1.2rem; }
+        article p { margin-bottom: 15px; opacity: 0.9; }
+        .toc { background: rgba(0,0,0,0.2); padding: 20px; border-radius: 10px; margin-bottom: 30px; }
+        .toc a { display: block; color: #ccc; text-decoration: none; margin-bottom: 8px; }
+        .toc a:hover { color: var(--accent); }
+
+        /* Footer */
+        footer { margin-top: 50px; text-align: center; font-size: 0.8rem; opacity: 0.6; border-top: 1px solid #333; padding-top: 20px; }
+        .legal-links a { color: var(--accent); text-decoration: none; margin: 0 10px; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <header>
+        <h1>Live Market Watch 🚀</h1>
+        <p>Real-Time Crypto Tracker & Profit Calculator</p>
+    </header>
+
+    <div class="price-grid" id="priceGrid">
+        <div class="card">Loading...</div>
+    </div>
+
+    <div class="calculator">
+        <h3 style="margin-bottom: 20px; border-bottom: 1px solid #444; padding-bottom: 10px;">💰 Smart ROI Calculator</h3>
+        <div class="input-group">
+            <label>Investment Amount ($)</label>
+            <input type="number" id="investAmount" placeholder="e.g. 100">
+        </div>
+        <div class="input-group">
+            <label>Buy Price ($)</label>
+            <input type="number" id="buyPrice" placeholder="e.g. 95000">
+        </div>
+        <div class="input-group">
+            <label>Sell Price / Target ($)</label>
+            <input type="number" id="sellPrice" placeholder="e.g. 105000">
+        </div>
+        <button onclick="calculateProfit()">Calculate Profit</button>
+        <div id="result"></div>
+    </div>
+
+    <article>
+        <div class="toc">
+            <h3 style="margin-top:0; color:var(--accent);">Table of Contents</h3>
+            <a href="#why-use">➤ Why Use a Crypto Profit Calculator?</a>
+            <a href="#how-to">➤ How to Calculate ROI (Step-by-Step)</a>
+            <a href="#strategies">➤ 3 Best Trading Strategies for 2026</a>
+            <a href="#faq">➤ Frequently Asked Questions (FAQs)</a>
+        </div>
+
+        <h2 id="why-use">Why Use a Live Crypto Profit Calculator?</h2>
+        <p>In the fast-paced world of cryptocurrency, prices of assets like Bitcoin (BTC) and Ethereum (ETH) change every second. Traders often ask, <strong>"How can I track my crypto profit instantly?"</strong>. Live Market Watch solves this problem by providing real-time data and an instant profit calculator.</p>
+        <p>Manual calculations often lead to errors. Our tool helps you determine your exact <em>Risk-to-Reward ratio</em> before you even place a trade. This is essential for both day traders (scalpers) and long-term holders (HODLers).</p>
+
+        <h2 id="how-to">How to Calculate ROI (Return on Investment)</h2>
+        <p>Understanding your profit margin is key to successful trading. The formula used by professional traders is:</p>
+        <blockquote style="background:#333; padding:15px; border-left:4px solid var(--accent); margin:15px 0;">
+            <strong>Profit = (Investment / Buy Price) * Sell Price - Investment</strong>
+        </blockquote>
+        <p>Simply enter your investment amount in the calculator above to see your potential returns immediately.</p>
+
+        <h2 id="strategies">3 Best Trading Strategies for 2026</h2>
+        <h3>1. Dollar-Cost Averaging (DCA)</h3>
+        <p>Don't buy all at once. Invest small amounts weekly to average out your entry price. Use our tracker to monitor your average buy price.</p>
+        <h3>2. Scalping with Live Data</h3>
+        <p>Scalpers need data that updates in seconds. Our tool refreshes every 30 seconds, making it perfect for catching small market moves on your mobile or tablet.</p>
+        <h3>3. Swing Trading</h3>
+        <p>Buy low and sell high over a period of days. Use the calculator to set your "Take Profit" and "Stop Loss" targets effectively.</p>
+
+        <h2 id="faq">Frequently Asked Questions (FAQs)</h2>
+        <h3>Is this Crypto Calculator free?</h3>
+        <p>Yes, Live Market Watch is completely free. We believe in providing open tools for the community.</p>
+        <h3>Is my data secure?</h3>
+        <p>Absolutely. We do not store any of your input data on our servers. All calculations happen locally on your device.</p>
+    </article>
+
+    <footer>
+        <p>&copy; 2026 Live Market Watch. All rights reserved.</p>
+        <div class="legal-links">
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="disclaimer.html">Disclaimer</a>
+            <a href="about.html">About Us</a>
+        </div>
+        <p style="margin-top: 15px;">Contact Us: <strong>Best247team@Gmail.com</strong></p>
+    </footer>
+
+    <script>
+        const apiURL = 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana,ripple,dogecoin,cardano&vs_currencies=usd&include_24hr_change=true';
+        
+        async function fetchPrices() {
+            try {
+                const response = await fetch(apiURL);
+                const data = await response.json();
+                renderPrices(data);
+            } catch (error) { console.error('Error fetching prices:', error); }
+        }
+
+        function renderPrices(data) {
+            const grid = document.getElementById('priceGrid');
+            grid.innerHTML = '';
+            const coins = [
+                { id: 'bitcoin', name: 'Bitcoin', s: 'BTC' },
+                { id: 'ethereum', name: 'Ethereum', s: 'ETH' },
+                { id: 'solana', name: 'Solana', s: 'SOL' },
+                { id: 'ripple', name: 'XRP', s: 'XRP' },
+                { id: 'dogecoin', name: 'Dogecoin', s: 'DOGE' },
+                { id: 'cardano', name: 'Cardano', s: 'ADA' }
+            ];
+            
+            coins.forEach(coin => {
+                const price = data[coin.id].usd;
+                const change = data[coin.id].usd_24h_change.toFixed(2);
+                const isUp = change >= 0;
+                grid.innerHTML += `
+                    <div class="card">
+                        <div style="font-weight:bold; font-size:1.1rem;">${coin.name}</div>
+                        <div class="coin-price">$${price.toLocaleString()}</div>
+                        <div class="${isUp ? 'up' : 'down'}">
+                            ${isUp ? '▲' : '▼'} ${change}%
+                        </div>
+                    </div>`;
+            });
+        }
+
+        function calculateProfit() {
+            const inv = parseFloat(document.getElementById('investAmount').value);
+            const buy = parseFloat(document.getElementById('buyPrice').value);
+            const sell = parseFloat(document.getElementById('sellPrice').value);
+            
+            if (!inv || !buy || !sell) return alert("Please fill all fields");
+
+            const profit = ((inv / buy) * sell) - inv;
+            const percent = ((sell - buy) / buy) * 100;
+            const resultDiv = document.getElementById('result');
+            
+            resultDiv.style.display = 'block';
+            resultDiv.innerHTML = `
+                <strong style="color:${profit >= 0 ? '#42b883' : '#fd5d93'}; font-size: 1.3rem;">
+                    ${profit >= 0 ? 'Profit' : 'Loss'}: $${profit.toFixed(2)}
+                </strong>
+                <br><small>Return: ${percent.toFixed(2)}%</small>
+            `;
+        }
+
+        fetchPrices();
+        setInterval(fetchPrices, 30000); // Auto-refresh for retention
+    </script>
+</body>
+</html>
